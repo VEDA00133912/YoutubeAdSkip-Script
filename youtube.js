@@ -13,8 +13,8 @@ function checkAd() {
   const adElement = document.querySelector('.ad-simple-attributed-string.ytp-ad-badge__text--clean-player.ytp-ad-badge__text--clean-player-with-light-shadow');
 
   if (adElement && !isAdPlaying) {
-    console.log('広告が開始しました。16倍速に設定します');
-    setPlaybackRate(16);
+    console.log('広告が開始しました');
+    setPlaybackRate(30);
     isAdPlaying = true; 
   } else if (!adElement && isAdPlaying) {
     console.log('広告が終了しました。通常速度に戻します');
