@@ -14,7 +14,7 @@ function checkAd() {
 
   if (adElement && !isAdPlaying) {
     console.log('広告が開始しました');
-    setPlaybackRate(30);
+    setPlaybackRate(16);
     isAdPlaying = true; 
   } else if (!adElement && isAdPlaying) {
     console.log('広告が終了しました。通常速度に戻します');
