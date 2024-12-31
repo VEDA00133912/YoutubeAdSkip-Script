@@ -1,26 +1,13 @@
-let isAdPlaying = false; 
-let velocity = 500; 
+const observer = new MutationObserver(() => {
+    const adBadge = document.querySelector('.ad-simple-attributed-string.ytp-ad-badge__text--clean-player.ytp-ad-badge__text--clean-player-with-light-shadow');
+    if (adBadge) {
+        console.log('広告をスキップします');
+        const videoElement = document.querySelector('.html5-main-video');
+        if (videoElement) {
+            videoElement.currentTime += 999; 
+        }
+    }
+});
 
-function setPlaybackRate(rate) {
-  const video = document.querySelector('video');
-  if (video) {
-    video.playbackRate = rate;
-    console.log(`再生速度を${rate}倍速に設定しました`);
-  }
-}
-
-function checkAd() {
-  const adElement = document.querySelector('.ad-simple-attributed-string.ytp-ad-badge__text--clean-player.ytp-ad-badge__text--clean-player-with-light-shadow');
-
-  if (adElement && !isAdPlaying) {
-    console.log('広告が開始しました');
-    setPlaybackRate(16);
-    isAdPlaying = true; 
-  } else if (!adElement && isAdPlaying) {
-    console.log('広告が終了しました。通常速度に戻します');
-    setPlaybackRate(1);
-    isAdPlaying = false; 
-  }
-}
-
-setInterval(checkAd, velocity);
+observer.observe(document.body, { childList: true, subtree: true });
+console.log('広告の監視を開始します');
