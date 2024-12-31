@@ -4,7 +4,7 @@ const observer = new MutationObserver(() => {
         console.log('広告をスキップします');
         const videoElement = document.querySelector('video');
         if (videoElement) {
-            videoElement.currentTime = 999; 
+            videoElement.currentTime += 999; 
         }
     }
 });
